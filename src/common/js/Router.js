@@ -74,10 +74,6 @@
 		   if(self.routers[transition.path].fn){
 		   		self.routers[transition.path].fn(transition)
 		   }else{
-               let app = document.getElementById('app');
-               let scriptEle = document.createElement('div');
-               scriptEle.setAttribute("id","appContext");
-               app.appendChild(scriptEle);
                self.routers[transition.path].fn = file.I_RESOLVE_INIT;
                self.routers[transition.path].fn(transition)
 		   }

@@ -1,16 +1,29 @@
+let footerHtml = `<div class='footer'>© Copyright 2017 <b>Thought</b>Works</div>`;
+let headerHtml = `<div>顶部</div>`;
 
 export const I_RESOLVE_INIT = (transition) => { 
-	document.getElementById("appContext").innerHTML = getJsContext();
-	console.log("首页回调" + JSON.stringify(transition))
+	creatElements("header","header",headerHtml);
 
-	let footerHtml = `<footer class='footer'>© Copyright 2017 <b>Thought</b>Works</footer>`;
-	getFooter("appContext",footerHtml);
+	creatElements("body","body",getBodyHtml());
+
+	creatElements("footer","footer",footerHtml);
 }
 
-const getJsContext = () =>{
+const getBodyHtml = () =>{
 	return "<p>我和他也</p>"
 }
 
-const getFooter = (id , footerHtml) =>{
-    document.getElementById(id).insertAdjacentHTML('beforeend', footerHtml);
+const creatElements=(ele,id,html)=>{
+	let app = document.getElementById('app');
+	let element;
+	if(!document.getElementById(id)){
+		element = document.createElement(ele);
+		element.setAttribute("id",id);
+	}else{
+		element = document.getElementById(id);
+		element.innerHTML = '';
+	}
+	element.insertAdjacentHTML('beforeend',html)
+	app.append(element);
+	return element;
 }
