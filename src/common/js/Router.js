@@ -1,13 +1,16 @@
+/**
+ * 路由实现，单页面考虑
+ */
 (function() {
-	var util = {
+	let util = {
 		//获取路由的路径和详细参数
 		getParamsUrl:function(){
-			var hashDeatail = location.hash.split("?"),
+			let hashDeatail = location.hash.split("?"),
 				hashName = hashDeatail[0].split("#")[1],//路由地址
 				params = hashDeatail[1] ? hashDeatail[1].split("&") : [],//参数内容
 				query = {};
-			for(var i = 0;i<params.length ; i++){
-				var item = params[i].split("=");
+			for(let i = 0;i<params.length ; i++){
+				let item = params[i].split("=");
 				query[item[0]] = item[1]
 			}
 			return 	{
@@ -16,14 +19,14 @@
 			}
 		}
 	}
-	function spaRouters(){
-		this.routers = {};//保存注册的所有路由
-		this.beforeFun = null;//切换前
-		this.afterFun = null;
+
+	function iRouters(){
+		this.routers = {};//用于保存注册的所有路由
 	}
-	spaRouters.prototype={
+
+	iRouters.prototype={
 		init:function(){
-			var self = this;
+			let self = this;
 			//页面加载匹配路由
 			window.addEventListener('load',function(){
 				self.urlChange()
@@ -33,27 +36,17 @@
 				self.urlChange()
 			})
 			//异步引入js通过回调传递参数
-			window.SPA_RESOLVE_INIT = null;
+			window.I_RESOLVE_INIT = null;
 		},
+
+		//刷新函数
 		refresh:function(currentHash){
-			var self = this;
-			if(self.beforeFun){
-				self.beforeFun({
-					to:{
-						path:currentHash.path,
-						query:currentHash.query
-					},
-					next:function(){
-						self.routers[currentHash.path].callback.call(self,currentHash)
-					}
-				})
-			}else{
-				self.routers[currentHash.path].callback.call(self,currentHash)
-			}
+			let self = this;
+			self.routers[currentHash.path].callback.call(self,currentHash)
 		},
 		//路由处理
 		urlChange:function(){
-			var currentHash = util.getParamsUrl();
+			let currentHash = util.getParamsUrl();
 			if(this.routers[currentHash.path]){
 				this.refresh(currentHash)
 			}else{
@@ -61,6 +54,7 @@
 				location.hash = '/homepage'
 			}
 		},
+
 		//单层路由注册
 		map:function(path,callback){
 			path = path.replace(/\s*/g,"");//过滤空格
@@ -73,45 +67,27 @@
 				console.trace('注册'+path+'地址需要提供正确的的注册回调')
 			}
 		},
-		//切换之前一些处理
-		beforeEach:function(callback){
-			if(Object.prototype.toString.call(callback) === '[object Function]'){
-				this.beforeFun = callback;
-			}else{
-				console.trace('路由切换前钩子函数不正确')
-			}
-		},
-		//切换成功之后
-		afterEach:function(callback){
-			if(Object.prototype.toString.call(callback) === '[object Function]'){
-				this.afterFun = callback;
-			}else{
-				console.trace('路由切换后回调函数不正确')
-			}
-		},
-		//路由异步懒加载js文件
+
+		//路由js加载实现
 		asyncFun:function(file,transition){
-		   var self = this;
+		   let self = this;
 		   if(self.routers[transition.path].fn){
-		   		self.afterFun && self.afterFun(transition)
 		   		self.routers[transition.path].fn(transition)
 		   }else{
-               var app = document.getElementById('app');
-               var scriptEle = document.createElement('div');
-               scriptEle.setAttribute("id","jsContext");
+               let app = document.getElementById('app');
+               let scriptEle = document.createElement('div');
+               scriptEle.setAttribute("id","appContext");
                app.appendChild(scriptEle);
-               self.afterFun && self.afterFun(transition)
-               self.routers[transition.path].fn = file.SPA_RESOLVE_INIT;
+               self.routers[transition.path].fn = file.I_RESOLVE_INIT;
                self.routers[transition.path].fn(transition)
 		   }
 		},
 		//同步操作
 		syncFun:function(callback,transition){
-			this.afterFun && this.afterFun(transition)
 			callback && callback(transition)
 		}
 
 	}
 	//注册到window全局
-	window.spaRouters = new spaRouters();
+	window.iRouters = new iRouters();
 })()

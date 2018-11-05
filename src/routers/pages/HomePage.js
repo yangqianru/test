@@ -1,10 +1,10 @@
 
-export const SPA_RESOLVE_INIT = (transition) => { 
-	document.getElementById("jsContext").innerHTML = getJsContext();
+export const I_RESOLVE_INIT = (transition) => { 
+	document.getElementById("appContext").innerHTML = getJsContext();
 	console.log("首页回调" + JSON.stringify(transition))
 
 	let footerHtml = `<footer class='footer'>© Copyright 2017 <b>Thought</b>Works</footer>`;
-	getFooter("jsContext",footerHtml);
+	getFooter("appContext",footerHtml);
 }
 
 const getJsContext = () =>{
