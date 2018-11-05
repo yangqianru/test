@@ -1,29 +1,18 @@
-let footerHtml = `<div class='footer'>© Copyright 2017 <b>Thought</b>Works</div>`;
+import {creatElements} from '../../common/js/util'
+import {getAccordion} from '../../components/accordion/accordion'
+
+let footerHtml = `<div>© Copyright 2018 <b>Thought</b>Works</div>`;
 let headerHtml = `<div>顶部</div>`;
 
 export const I_RESOLVE_INIT = (transition) => { 
-	creatElements("header","header",headerHtml);
+	creatElements("app", "header","header",headerHtml);
 
-	creatElements("body","body",getBodyHtml());
+	creatElements("app", "body","body",getBodyHtml());
 
-	creatElements("footer","footer",footerHtml);
+	creatElements("app", "footer","footer",footerHtml);
 }
 
 const getBodyHtml = () =>{
-	return "<p>我和他也</p>"
+	return `<div id= 'accordion' class='accordion'>${getAccordion()}</div><div class='showlist'>展示控件</div>`
 }
 
-const creatElements=(ele,id,html)=>{
-	let app = document.getElementById('app');
-	let element;
-	if(!document.getElementById(id)){
-		element = document.createElement(ele);
-		element.setAttribute("id",id);
-	}else{
-		element = document.getElementById(id);
-		element.innerHTML = '';
-	}
-	element.insertAdjacentHTML('beforeend',html)
-	app.append(element);
-	return element;
-}
