@@ -34,9 +34,12 @@ module.exports = {
                     {
                         loader:'url-loader',
                         options:{
-                            limit: 10000,
+                            limit: 100000,
                             name: resolve('dist/static/img/[name].[hash:7].[ext]')
                         }
+                    },
+                    {
+                        loader:'image-webpack-loader'    
                     }
                 ]
             },

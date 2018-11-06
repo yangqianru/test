@@ -1,6 +1,6 @@
 import {creatElements} from '../../common/js/util'
 import {getAccordion, setItemClickListener} from '../../components/accordion/accordion'
-import {getShowContext} from '../../components/showcontext/showcontext';
+import {getShowContext, setTableData} from '../../components/showcontext/showcontext';
 import userImg from '../../assets/logo/logo.svg';
 
 let footerHtml = `<div>© Copyright 2018 <b>Thought</b>Works</div>`;
@@ -13,6 +13,8 @@ export const I_RESOLVE_INIT = (transition) => {
 
 	creatElements("app", "footer","footer",footerHtml);
 
+	setTableData([1,2,3]);
+	
 	addEventListeners();
 }
 

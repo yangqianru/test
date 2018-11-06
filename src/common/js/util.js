@@ -1,11 +1,15 @@
 //通用方法
-export const creatElements=(parentId, ele,id,html)=>{
+export const creatElements=(parentId, ele,id,html,className)=>{
 	let parent = document.getElementById(parentId);
 	let element;
 	if(!document.getElementById(id)){
 		element = document.createElement(ele);
 		element.setAttribute("id",id);
-		element.setAttribute("class",id);
+		if(className){
+			element.setAttribute("class",className);
+		}else{
+			element.setAttribute("class",id);
+		}
 	}else{
 		element = document.getElementById(id);
 		element.innerHTML = '';

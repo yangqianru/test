@@ -27,7 +27,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         host: 'localhost',
         port: 9999,
         open: true,
-        openPage:'index.html',
+        openPage:'index.html/#/homepage',
         overlay: {
             warnings: true,
             errors: false
