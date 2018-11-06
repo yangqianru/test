@@ -1,8 +1,9 @@
 import {creatElements} from '../../common/js/util'
 import {getAccordion, setItemClickListener} from '../../components/accordion/accordion'
+import userImg from '../../assets/logo/logo.svg';
 
 let footerHtml = `<div>© Copyright 2018 <b>Thought</b>Works</div>`;
-let headerHtml = `<div>顶部</div>`;
+let headerHtml = `<div class='logo'></div><div class='user'><img src=${userImg}/></div>`;
 
 export const I_RESOLVE_INIT = (transition) => { 
 	creatElements("app", "header","header",headerHtml);

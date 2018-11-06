@@ -24,3 +24,26 @@ html, body {
     background: #efefef;
     grid-template-columns: repeat(12, 1fr);
 }
+
+.header{
+    display: grid;
+    grid-gap: 5px;
+    grid-template-columns: repeat(12, 1fr);
+    div{
+        &.logo{
+            grid-column-start:6;
+            grid-column-end:8;
+            background: url('../../src/assets/logo/logo.svg') no-repeat center;
+            background-size: auto 40px;
+        }
+        &.user{
+            grid-column-start: 10;
+            grid-column-end: 11;
+            img{
+                width:40px;
+                height:40px;
+                border-radius: 50%;
+            }
+        }
+    }
+}
