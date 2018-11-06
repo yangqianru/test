@@ -2,9 +2,15 @@
     grid-column-start: 4;
     grid-column-end: 12;
     grid-gap: 20px;
-    padding: 20px 0px;
     display: grid;
-    grid-template-rows: repeat(4, 1fr);
+    overflow: hidden;
+    &>div{
+        overflow-y: auto;
+        width:calc(~"100% + 18px");
+        padding: 20px 0;
+        margin-right: 18px;
+        height: calc(100vh - 80px);
+    }
 }
 
 .show_card{
@@ -86,12 +92,14 @@
 .list_item_index{
     height: 100px;
     display: grid;
+    background: #f3f3f3;
     grid-column-gap: 20px;
     grid-template-columns: repeat(10, 1fr);
 }
 
 .item_type_icon{
     background: url('../../assets/os_icons/windows.png') no-repeat center;
+    background-size: 100%;
 }
 
 .item_info{

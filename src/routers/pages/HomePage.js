@@ -14,13 +14,13 @@ export const I_RESOLVE_INIT = (transition) => {
 
 	creatElements("app", "footer","footer",footerHtml);
 
-	setTableData([1,2,3]);
+	setTableData([1,2,3,4,5,6]);
 	
 	addEventListeners();
 }
 
 const getBodyHtml = () =>{
-	return `<div id= 'accordion' class='accordion'>${getAccordion()}</div><div id='show_context' class='show_context'>${getShowContext()}</div>`
+	return `<div id= 'accordion' class='accordion'>${getAccordion()}</div><div class='show_context'><div><div id='show_context'>${getShowContext()}</div></div></div>`
 }
 
 const addEventListeners = () =>{

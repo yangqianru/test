@@ -1,23 +1,31 @@
+.overflowStyle{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 .accordion{
     background: #2d4054;
     grid-column-start: 2;
     grid-column-end: 4;
     display: grid;
-    padding: 20px 20px;
-    grid-template-rows: repeat(10, 1fr);
+    // padding: 20px 20px;
+    grid-template-rows: repeat(6, 45px) 1fr;
 }
 
 .accordion_item_div{
+   line-height: 45px;
+   height: 45px;
     &:hover{
         cursor: pointer;
         background: #435466;
     }
 }
 
-.accordion_item{
-    width: 100%;
-    padding: 10px 10px;
-    top: 50%;
+.accordion_item:extend(.overflowStyle){
+    width: calc(~"100% - 20px");
+    height:45px;
+    line-height: 45px;
     color: #f3f3f3;
     &:hover{
         cursor: pointer;
@@ -28,7 +36,6 @@
 }
 
 .history{
-    grid-row-start: 8;
-    grid-row-end: 10;
+    grid-row-start: 7;
     color: #f3f3f3;
 }
