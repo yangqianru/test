@@ -47,6 +47,14 @@ module.exports = {
                         loader:'art-template-loader',
                     }
                 ]
+            },
+            {
+                test:/\.(ttf|woff|eot)$/,
+                use:[
+                    {
+                        loader:'file-loader',
+                    }
+                ]
             }
         ]
     },

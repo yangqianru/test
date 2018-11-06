@@ -1,0 +1,35 @@
+.accordion{
+    background: #2d4054;
+    grid-column-start: 2;
+    grid-column-end: 4;
+    display: grid;
+    padding: 20px 20px;
+    grid-template-rows: repeat(10, 1fr);
+}
+
+.accordion_item_div{
+    padding: 10% 0;
+    &:hover{
+        cursor: pointer;
+        background: #435466;
+    }
+}
+
+.accordion_item{
+    width: 100%;
+    padding: 0 10px;
+    top: 50%;
+    color: #f3f3f3;
+    &:hover{
+        cursor: pointer;
+        background: #435466;
+        color: #00b4cf;
+    }
+    
+}
+
+.history{
+    grid-row-start: 8;
+    grid-row-end: 10;
+    color: #f3f3f3;
+}
