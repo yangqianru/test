@@ -30,6 +30,9 @@ export const onItemClick = (e) =>{
         case accordionItem[0].iconClass:
            alert('click the button dashboard');
            break;
+        case accordionItem[1].iconClass:
+           alert('click the button dashboard');
+           break;
         default:
             alert('no para');
             break;

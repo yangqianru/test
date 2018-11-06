@@ -1,5 +1,6 @@
 import {creatElements} from '../../common/js/util'
 import {getAccordion, setItemClickListener} from '../../components/accordion/accordion'
+import {getShowContext} from '../../components/showcontext/showcontext';
 import userImg from '../../assets/logo/logo.svg';
 
 let footerHtml = `<div>© Copyright 2018 <b>Thought</b>Works</div>`;
@@ -16,7 +17,7 @@ export const I_RESOLVE_INIT = (transition) => {
 }
 
 const getBodyHtml = () =>{
-	return `<div id= 'accordion' class='accordion'>${getAccordion()}</div><div class='show_context'>展示控件</div>`
+	return `<div id= 'accordion' class='accordion'>${getAccordion()}</div><div id='show_context' class='show_context'>${getShowContext()}</div>`
 }
 
 const addEventListeners = () =>{
