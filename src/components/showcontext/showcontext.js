@@ -11,6 +11,12 @@ export const getShowContext = () =>{
 export const setTableData = (data) =>{
     let listTable = document.getElementById(show_list_table);
     data.map((index,element) => {
-        creatElements('show_list_table','div','list_item'+index,tableItem, 'list_item');
+        creatElements({
+            parentId:'show_list_table',
+            ele:'div',
+            id:'list_item'+index,
+            className:'list_item',
+            html:tableItem
+        });
     });
 }

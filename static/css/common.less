@@ -4,12 +4,11 @@
     box-sizing: border-box;
 }
 
-html, body {
+html {
     height:100%
 }
 
 .app{
-    // height: 98%;
     display: grid;
     grid-template-rows: 60px 1fr 20px;
 }
@@ -20,14 +19,16 @@ html, body {
 
 .body{
     display: grid;
-    grid-gap: 30px;
+    grid-gap: 25px;
     background: #efefef;
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: 1fr 3fr 7fr 1fr;
+    height: calc(100vh - 80px);
+    min-height: 500px;
 }
 
 .header{
     display: grid;
-    grid-gap: 5px;
+    grid-gap: 25px;
     grid-template-columns: repeat(12, 1fr);
     div{
         &.logo{
@@ -40,7 +41,7 @@ html, body {
             grid-column-start: 11;
             grid-column-end: 12;
             align-self: center;
-            text-align: right;
+            text-align: center;
             img{
                 width:40px;
                 height:40px;
