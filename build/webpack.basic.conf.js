@@ -21,7 +21,11 @@ module.exports = {
         rules:[
             {
                 test:/\.js$/,
-                include:[resolve('src'),resolve('test'),resolve('node_modules/webpack-dev-server/client')],
+                include:[
+                    resolve('src'),
+                    resolve('static'),
+                    resolve('node_modules/webpack-dev-server/client')
+                ],
                 use:[
                     {
                         loader:'babel-loader'
@@ -34,8 +38,8 @@ module.exports = {
                     {
                         loader:'url-loader',
                         options:{
-                            limit: 100000,
-                            name: resolve('dist/static/img/[name].[hash:7].[ext]')
+                            limit: 10000,
+                            name: resolve('dist/static/imgs/[name].[ext]')
                         }
                     },
                     {
@@ -64,6 +68,7 @@ module.exports = {
                 use: [{
                     loader: 'html-loader',
                     options: {
+                        attrs: ['img:src', 'img:data-src', 'audio:src'],
                         minimize: true
                     }
 

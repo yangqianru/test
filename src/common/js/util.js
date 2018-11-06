@@ -18,3 +18,13 @@ export const creatElements=(parentId, ele,id,html,className)=>{
 	parent.append(element);
 	return element;
 }
+
+export const creatEle=(parentId,id,html)=>{
+	let parent = document.getElementById(parentId);
+	let element = document.getElementById(id);
+	if(element){
+		element.innerHTML = '';
+	}
+	parent.insertAdjacentHTML('beforeend',html)
+	return element;
+}

@@ -32,7 +32,7 @@ const webpackConfig = merge(baseWebpackConfig, {
             }
         ]
     },
-    devtool: 'source-map',
+    devtool: 'cheap-source-map',
     output:{
         path:path.resolve(__dirname, '../dist'),
         filename:path.posix.join('static', 'js/[name].[chunkhash].js'),
