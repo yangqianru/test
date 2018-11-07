@@ -1,4 +1,5 @@
 import {hideDialog} from '../../common/js/util';
+import {addEnv} from '../../components/showcontext/showcontext.js';
 
 //cancle
 const handleCancel=(dialogId)=>{
@@ -7,6 +8,7 @@ const handleCancel=(dialogId)=>{
 
 //confirm
 const handleConfirm=(dialogId,...params)=>{
+    addEnv(params[0],params[1]);
     hideDialog(dialogId);
 }
 
@@ -14,14 +16,17 @@ const handleConfirm=(dialogId,...params)=>{
 export const setBtnListener = () =>{
     let btnEle = document.getElementById('addDialog');
     btnEle.addEventListener('click',(ev)=>{
+        let ip = btnEle.getAttribute('ip');
         let target = ev.target;
+        console.log(ip)
         while(target != btnEle){
             if(target.id == 'close' ||target.id == 'cancel'){
                 handleCancel('addDialog');
                 break;
             }
             if(target.id == 'confirm'){
-                handleCancel('addDialog');
+                let envStr = document.getElementById('input').value;
+                handleConfirm('addDialog',envStr,ip);
                 break;
             }
             target = target.parentNode;

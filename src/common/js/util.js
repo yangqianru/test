@@ -19,11 +19,10 @@ export const creatElements = ({parentId,ele,id,className,html}) => {
 				element = document.createElement(ele);
 				id && element.setAttribute("id", id);				
 				className && element.setAttribute("class", className);
-			}else{
-
 			}
 		} else {
 			element = document.getElementById(id);
+			element.innerHTML = '';
 		}
 
 		if(html&&element){
@@ -67,14 +66,17 @@ export const isHTMLElement=(obj)=>{
  * 显示/隐藏弹框
  * @method showDialog hideDialog
  * @parentId 所属父节点Id
- * @left 插入的html标签
- * @top 插入的html标签的id
+ * @left pageX
+ * @top pageY
+ * #ip 元素ip
  *  */
-export const showDialog=(dialogId,left,top)=>{
+export const showDialog=(dialogId,left,top,ip)=>{
 	let dialogEle = document.getElementById(dialogId),
 		coverEle = document.getElementById('cover');
+		document.getElementById('input').value = '';
 		coverEle.classList.add('display');
 		dialogEle.setAttribute('open',open);
+		dialogEle.setAttribute('ip',ip);
 		dialogEle.style.left=left-15+'px';
 		dialogEle.style.top=top+42+'px';
 	}
@@ -84,4 +86,5 @@ export const hideDialog=(dialogId)=>{
 		coverEle = document.getElementById('cover');
 	coverEle.classList.remove('display');
     dialogEle.removeAttribute('open');
+    dialogEle.removeAttribute('ip');
 }
