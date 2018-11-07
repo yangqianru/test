@@ -62,3 +62,26 @@ export const isHTMLElement=(obj)=>{
 		return false;
 	}
 }
+
+/**
+ * 显示/隐藏弹框
+ * @method showDialog hideDialog
+ * @parentId 所属父节点Id
+ * @left 插入的html标签
+ * @top 插入的html标签的id
+ *  */
+export const showDialog=(dialogId,left,top)=>{
+	let dialogEle = document.getElementById(dialogId),
+		coverEle = document.getElementById('cover');
+		coverEle.classList.add('display');
+		dialogEle.setAttribute('open',open);
+		dialogEle.style.left=left-15+'px';
+		dialogEle.style.top=top+42+'px';
+	}
+	
+export const hideDialog=(dialogId)=>{
+	let dialogEle = document.getElementById(dialogId),
+		coverEle = document.getElementById('cover');
+	coverEle.classList.remove('display');
+    dialogEle.removeAttribute('open');
+}

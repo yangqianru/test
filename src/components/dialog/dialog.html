@@ -1,8 +1,13 @@
-<dialog id='addDialog' class="addDialog">
-    <div class='triangle'><span></span></div>
-    <span icon='icon-close'></span>
-    <label for='input'>Separate multiple name with commas</label>
-    <input type="text" id='input' placeholder="Input value" autocomplete="off"/>
-    <button>Add Resources</button>
-    <button>Cancel</button>
-</dialog>
+<div>
+    <dialog id='addDialog' class="addDialog">
+        <div class='triangle'></div>
+        <span class='icon-close' id='close'></span>
+        <label for='input'>Separate multiple name with commas</label>
+        <input type="text" id='input' placeholder="Input value" autocomplete="off"/>
+        <div class='addDialog_btn'>
+            <button id='confirm'>Add Resources</button>
+            <button class='info' id='cancel'>Cancel</button>
+        </div>
+    </dialog>
+    <div id='cover' class='cover'></div>
+</div>

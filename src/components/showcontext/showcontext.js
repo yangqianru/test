@@ -1,6 +1,6 @@
 import './showcontext.less';
 import showcontext from './showcontext.html';
-import {creatElements,parseDom} from '../../common/js/util';
+import {creatElements,parseDom,showDialog} from '../../common/js/util';
 import tableItem from './tableitem.html';
 
 
@@ -42,7 +42,8 @@ export const setOperEleClickListener = () =>{
         let target = ev.target;
         while(target != operEle){
             if(target.classList.contains('icon-plus')){
-                showAddDialog(target.id);
+                console.log(ev);
+                showDialog('addDialog',ev.pageX,ev.pageY);
                 break;
             }
             if(target.classList.contains('icon-trash')){
@@ -56,8 +57,4 @@ export const setOperEleClickListener = () =>{
             target = target.parentNode;
         }
     })
-}
-
-const showAddDialog=(parentId)=>{
-    document.getElementById('addDialog').setAttribute('open','open');
 }

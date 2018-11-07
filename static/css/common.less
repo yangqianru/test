@@ -14,6 +14,12 @@ button{
     color:#fff;
     padding:3px 10px;
     cursor: pointer;
+    &.info{
+        background: #435466;
+    }
+    &.info:hover{
+        background: #2d4054;
+    }
     &::before{
         margin-right: 5px;
     }
@@ -25,6 +31,24 @@ button{
 dialog{
     border:0;
     color:#666;
+    z-index: 9999;
+    position: absolute;
+}
+
+.cover{
+    width:100%;
+    height:100%;
+    position: absolute;
+    left:0;
+    top:0;
+    filter: alphha(opacity = 60);
+    opacity: 0.6;
+    display: none;
+    z-index: 9998;
+    background: rgba(0, 0, 0, .4);
+    &.display{
+        display: block;
+    }
 }
 
 html {
