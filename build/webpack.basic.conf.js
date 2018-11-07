@@ -60,6 +60,9 @@ module.exports = {
                 use:[
                     {
                         loader:'file-loader',
+                        options:{
+                            interpolate:require
+                        }
                     }
                 ]
             },

@@ -37,7 +37,7 @@ export const getHistory = () =>{
 
 // 通过事件委托，监听手风琴点击事件
 export const setItemClickListener = () =>{
-    var according = document.getElementById('accordion');
+    let according = document.getElementById('accordion');
     according.addEventListener('click',(ev)=>{
         let target = ev.target;
         while(target != according){

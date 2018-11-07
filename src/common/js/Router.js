@@ -51,7 +51,7 @@
 				this.refresh(currentHash)
 			}else{
 				//不存在的地址重定向到首页
-				location.hash = '/homepage'
+				location.hash = '/Agent'
 			}
 		},
 

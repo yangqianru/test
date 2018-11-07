@@ -1,7 +1,30 @@
+@import '../../src/components/dialog/dialog.less';
+
 *{
     margin:0;
     padding:0;
     box-sizing: border-box;
+}
+
+button{
+    border:0;
+    height:30px;
+    font-size: 14px;
+    background: #00b4cf;
+    color:#fff;
+    padding:3px 10px;
+    cursor: pointer;
+    &::before{
+        margin-right: 5px;
+    }
+    &:hover{
+        background: #01869a;
+    } 
+}
+
+dialog{
+    border:0;
+    color:#666;
 }
 
 html {
@@ -49,4 +72,10 @@ html {
             }
         }
     }
+}
+
+.overflowStyle{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }

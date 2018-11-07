@@ -1,5 +1,5 @@
-import * as HomePage from "./pages/HomePage.js"
+import * as Agent from "./pages/Agent.js"
 
 export const PageRouter = [
-    {"router":"/homepage","context":HomePage}
+    {"router":"/Agent","context":Agent}
 ]

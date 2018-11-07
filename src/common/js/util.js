@@ -5,7 +5,7 @@
  * @ele 插入的html标签
  * @id 插入的html标签的id
  * @className 插入的html标签的className
- * @html 插入创建的html内部的子html字符串
+ * @html 插入创建的html内部的子html字符串或者html
  * 
  * 如果只想插入一段html元素，不涉及创建元素，可以只传：@parentId,@html
  *  */
@@ -19,17 +19,21 @@ export const creatElements = ({parentId,ele,id,className,html}) => {
 				element = document.createElement(ele);
 				id && element.setAttribute("id", id);				
 				className && element.setAttribute("class", className);
+			}else{
+
 			}
 		} else {
 			element = document.getElementById(id);
-			element.innerHTML = '';
 		}
-		
-		if (html&&element) {
-			element.insertAdjacentHTML('beforeend', html)
+
+		if(html&&element){
+			!isHTMLElement(html) && element.insertAdjacentHTML('beforeend', html);
+			isHTMLElement(html) && element.append(html);
 			parent.append(element);
-		}else{
-			parent.append(parseDom(html)[0]);
+		}
+		if(html&&!element){
+			!isHTMLElement(html) && parent.append(parseDom(html)[0]);
+			isHTMLElement(html) && parent.append(html);
 		}
 	} catch (error) {
 		console.log(error);
@@ -45,4 +49,16 @@ export const parseDom=(htmlStr)=>{
 	let objElement = document.createElement("div");
 	objElement.innerHTML = htmlStr;
 	return objElement.childNodes;
+}
+
+/**
+ * 判断是否为htmlElement元素 */
+export const isHTMLElement=(obj)=>{
+	let ele = document.createElement("div");
+	try {
+		ele.appendChild(obj.cloneNode(true));
+		return obj.nodeType == 1;
+	} catch (error) {
+		return false;
+	}
 }
