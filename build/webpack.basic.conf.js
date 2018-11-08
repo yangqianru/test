@@ -60,9 +60,6 @@ module.exports = {
                 use:[
                     {
                         loader:'file-loader',
-                        options:{
-                            interpolate:require
-                        }
                     }
                 ]
             },
@@ -72,7 +69,8 @@ module.exports = {
                     loader: 'html-loader',
                     options: {
                         attrs: ['img:src', 'img:data-src', 'audio:src'],
-                        minimize: true
+                        minimize: true,
+                        interpolate:true
                     }
 
                 }]

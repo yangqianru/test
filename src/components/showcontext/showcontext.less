@@ -9,7 +9,7 @@
         overflow-y: auto;
         width:calc(~"100% + 18px");
         padding: 20px 0;
-        margin-right: 18px;
+        // margin-right: 18px;
         .show_context{
             display: grid;
             grid-template-rows: 120px 50px;
@@ -40,15 +40,34 @@
     grid-row-end: 2;
     display: grid;
     align-items: center;
-    grid-template-columns: repeat(3, 100px) 3fr 1fr;
+    grid-template-columns:300px 3fr 1fr;
     grid-gap: 5px;
     background: #fff;
     color: #666;
+    grid-auto-rows: 50px;
     div{
-        text-align: center;
-        border-right: 2px solid #f3f3f3;
-        line-height: 50px;
-        font-size: 13px;
+        &.show_list_tab{
+            display: grid;
+            grid-auto-flow: column;
+            line-height: 50px;
+            text-align: center;
+            span{
+                display: inline-block;
+                grid-auto-flow: column;
+                grid-gap: 5px;
+                border: 2px solid #f3f3f3;
+                border-right: 0;
+                cursor: pointer;
+                &:hover{
+                    border-bottom: 2px solid #00b4cf;
+                    color:#00b4cf;
+                }
+            }
+        }
+        // text-align: center;
+        // border-right: 2px solid #f3f3f3;
+        // line-height: 50px;
+        // font-size: 13px;
         &.show_list_card{
             font-size: 22px;
             cursor: pointer;
@@ -67,6 +86,7 @@
         font-size: 20px;
         height: 30px;
         position: relative;
+        margin-left: 20px;
         &::before{
             line-height: 28px;
         }
