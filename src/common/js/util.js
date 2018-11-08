@@ -72,13 +72,16 @@ export const isHTMLElement=(obj)=>{
  *  */
 export const showDialog=(dialogId,left,top,ip)=>{
 	let dialogEle = document.getElementById(dialogId),
-		coverEle = document.getElementById('cover');
+		coverEle = document.getElementById('cover'),
+		clientWidth = document.body.clientWidth;
+		if(clientWidth>=1024){
+			dialogEle.style.left=left-15+'px';
+			dialogEle.style.top=top+42+'px';
+		}
 		document.getElementById('input').value = '';
 		coverEle.classList.add('display');
 		dialogEle.setAttribute('open',open);
 		dialogEle.setAttribute('ip',ip);
-		dialogEle.style.left=left-15+'px';
-		dialogEle.style.top=top+42+'px';
 	}
 	
 export const hideDialog=(dialogId)=>{

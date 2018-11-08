@@ -5,39 +5,57 @@ import tableItem from './tableitem.html';
 
 
 //主体内容
-export const getShowContext = () => {
+export const getShowContext = (data) => {
     return showcontext;
 }
 
 export const setTableData = (data) => {
     //存储数据到localstorage
-    localStorage.setItem('tableData', JSON.stringify(data));
+    localStorage.setItem('envsData', JSON.stringify(data));
+
+    let buildingNum=0,idleNum=0,physcalNum=0,virtualNum=0,sumNum=data.length;
 
     for (const item of data) {
-        let html = parseDom(tableItem)[0];
-        html.getElementsByClassName('item_info_top_link')[0].innerText = item.link;
-        html.getElementsByClassName('item_info_top_badge')[0].innerText = item.badge;
-        html.getElementsByClassName('item_info_top_ip')[0].innerText = item.ip;
-        html.getElementsByClassName('item_info_top_folder')[0].innerText = item.folder;
+         //type:0--physical,1-virtual;
+         item.type == 0?physcalNum++:virtualNum++;
+         console.log(physcalNum,virtualNum);
+ 
+         //badge:idle/building
+         item.badge == 'idle'?buildingNum++:idleNum++;
+         console.log(buildingNum,idleNum);
+ 
+        let tableEle = parseDom(tableItem)[0];
+        tableEle.getElementsByClassName('item_info_top_link')[0].innerText = item.link;
+        tableEle.getElementsByClassName('item_info_top_badge')[0].innerText = item.badge;
+        tableEle.getElementsByClassName('item_info_top_ip')[0].innerText = item.ip;
+        tableEle.getElementsByClassName('item_info_top_folder')[0].innerText = item.folder;
+        tableEle.getElementsByClassName('item_type_icon')[0].src = item.img;
         let envs = '';
         for (const env of item.envs) {
             envs += `<p>${env}<span class='icon-trash'></span></p>`;
         }
-        html.getElementsByClassName('item_info_operation_envs')[0].innerHTML = envs;
-        html.getElementsByClassName('item_info_operation_envs')[0].setAttribute('id', 'envs-' + item.ip);
-        html.getElementsByClassName('icon-plus')[0].setAttribute('id', 'plus-' + item.ip);
+        tableEle.getElementsByClassName('item_info_operation_envs')[0].innerHTML = envs;
+        tableEle.getElementsByClassName('item_info_operation_envs')[0].setAttribute('id', 'envs-' + item.ip);
+        tableEle.getElementsByClassName('icon-plus')[0].setAttribute('id', 'plus-' + item.ip);
         if (item.badge.toLowerCase() == 'building') {
-            html.getElementsByClassName('icon-deny')[0].classList.add('icon-deny-show');
-            html.getElementsByClassName('item_info_top_badge')[0].classList.add('building');
+            tableEle.getElementsByClassName('icon-deny')[0].classList.add('icon-deny-show');
+            tableEle.getElementsByClassName('item_info_top_badge')[0].classList.add('building');
         }
         creatElements({
             parentId: 'show_list_table',
             ele: 'div',
             className: 'list_item',
             id: 'list_item_' + item.ip,
-            html: html
+            html: tableEle
         });
     }
+
+    document.getElementById('buiding_num').innerText = buildingNum;
+    document.getElementById('idle_num').innerText = idleNum;
+    let cardStaticEle = document.getElementsByClassName('stat_card_stat')[0].querySelectorAll('p');
+    cardStaticEle[0].innerText = sumNum;
+    cardStaticEle[1].innerText = physcalNum;
+    cardStaticEle[2].innerText = virtualNum;
 }
 
 // 通过事件委托，监听项目构建中的增加、删除、禁止事件
@@ -68,22 +86,22 @@ export const setOperEleClickListener = () => {
 }
 
 const deleteEnv = (env, ip) => {
-    let tableData = JSON.parse(localStorage.getItem('tableData'));
-    for (const item of tableData) {
+    let envsData = JSON.parse(localStorage.getItem('envsData'));
+    for (const item of envsData) {
         let envs = item.envs;
         let index = envs.indexOf(env);
         if (item.ip == ip && index != -1) {
             envs.splice(index, 1);
-            console.log(envs, tableData);
-            setTableData(tableData);
+            console.log(envs, envsData);
+            setTableData(envsData);
             break;
         }
     }
 }
 
 export const addEnv = (envStr, ip) => {
-    let tableData = JSON.parse(localStorage.getItem('tableData')), newEnvs = envStr.split(',');
-    for (const OlderItem of tableData) {
+    let envsData = JSON.parse(localStorage.getItem('envsData')), newEnvs = envStr.split(',');
+    for (const OlderItem of envsData) {
         let OlderEnvs = OlderItem.envs;
         if (OlderItem.ip == ip) {
             for (let newEnv of newEnvs) {
@@ -94,7 +112,7 @@ export const addEnv = (envStr, ip) => {
                     console.log(newEnv + '添加失败，此浏览器已存在！')
                 }
             }
-            setTableData(tableData);
+            setTableData(envsData);
             break;
         }
     }

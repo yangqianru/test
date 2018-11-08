@@ -6,13 +6,11 @@ import './accordion.less'
 export const getAccordion = () =>{
     let accordionHtml = "";
     for(let item of accordionItem){
-        console.log(item);
         accordionHtml += `<div class ='accordion_item ${item.iconClass}'>${item.text}</div>`;
     }
+    accordionHtml += `<span id='hideAccordingBtn' class='hideAccordingBtn icon-close'></span>`
 	return accordionHtml;
 }
-
-//history
 
 //history
 export const getHistory = () =>{
@@ -29,12 +27,6 @@ export const getHistory = () =>{
     });
 }
 
-//手风琴条目
-// export const getAccordionItem = (iconClass,text) =>{
-// 	let accordionHtml = `<div id='${iconClass}' class = 'accordion_item ${iconClass}'"}> ${text}</div>`;
-// 	return accordionHtml;
-// }
-
 // 通过事件委托，监听手风琴点击事件
 export const setItemClickListener = () =>{
     let according = document.getElementById('accordion');
@@ -49,18 +41,3 @@ export const setItemClickListener = () =>{
         }
     })
 }
-
-//点击事件处理
-// export const onItemClick = (e) =>{
-//     switch (e.target.id){
-//         case accordionItem[0].iconClass:
-//            alert('click the button dashboard');
-//            break;
-//         case accordionItem[1].iconClass:
-//            alert('click the button dashboard');
-//            break;
-//         default:
-//             alert('no para');
-//             break;
-//     }
-// }

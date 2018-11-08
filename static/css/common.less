@@ -1,4 +1,6 @@
+@import './media.less';
 @import '../../src/components/dialog/dialog.less';
+
 
 *{
     margin:0;
@@ -66,27 +68,20 @@ html {
 
 .body{
     display: grid;
-    grid-gap: 25px;
     background: #efefef;
-    grid-template-columns: 1fr 3fr 7fr 1fr;
-    height: calc(100vh - 80px);
+    // grid-template-columns: 1fr 3fr 7fr 1fr;
+    height: calc(100vh - 82px);
     min-height: 500px;
 }
 
 .header{
     display: grid;
-    grid-gap: 25px;
-    grid-template-columns: repeat(12, 1fr);
     div{
         &.logo{
-            grid-column-start:6;
-            grid-column-end:8;
             background: url('../../src/assets/logo/logo.svg') no-repeat center;
             background-size: auto 40px;
         }
         &.user{
-            grid-column-start: 11;
-            grid-column-end: 12;
             align-self: center;
             text-align: center;
             img{

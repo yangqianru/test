@@ -33,25 +33,30 @@ module.exports = {
                 ]
             },
             {
+                test: /\.html$/,
+                use: [
+                    {
+                        loader: 'html-loader',
+                        options: {
+                            attrs: ['img:src', 'img:data-src', 'audio:src'],
+                            minimize: true,
+                            interpolate:true
+                        }
+                    }
+                ]
+            },
+            {
                 test:/\.(png|jpe?g|gif|svg)$/,
                 use:[
                     {
                         loader:'url-loader',
                         options:{
                             limit: 10000,
-                            name: resolve('dist/static/imgs/[name].[ext]')
+                            name: resolve('/dist/static/imgs/[name].[ext]')
                         }
                     },
                     {
                         loader:'image-webpack-loader'    
-                    }
-                ]
-            },
-            {
-                test:/\.art$/,
-                use:[
-                    {
-                        loader:'art-template-loader',
                     }
                 ]
             },
@@ -62,18 +67,6 @@ module.exports = {
                         loader:'file-loader',
                     }
                 ]
-            },
-            {
-                test: /\.html$/,
-                use: [{
-                    loader: 'html-loader',
-                    options: {
-                        attrs: ['img:src', 'img:data-src', 'audio:src'],
-                        minimize: true,
-                        interpolate:true
-                    }
-
-                }]
             }
         ]
     },

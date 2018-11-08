@@ -1,10 +1,12 @@
 import {creatElements} from '../../common/js/util'
 import {getAccordion, setItemClickListener,getHistory} from '../../components/accordion/accordion'
-import {getShowContext, setTableData,setOperEleClickListener} from '../../components/showcontext/showcontext';
+import {getShowContext,setTableData,setOperEleClickListener} from '../../components/showcontext/showcontext';
 import header from '../../components/header/header.html';
+import {setAccordingListener} from '../../components/header/header.js';
 import {versionDetail} from '../../../static/js/constant';
 import dialog from '../../components/dialog/dialog.html';
 import {setBtnListener} from '../../components/dialog/dialog.js';
+
 
 
 let footerHtml = `<div>© Copyright 2018 <b>Thought</b>Works</div>`;
@@ -43,11 +45,12 @@ export const I_RESOLVE_INIT = (transition) => {
 }
 
 const getBodyHtml = () =>{
-	return `<div id= 'accordion' class='accordion'>${getAccordion()}</div><div class='context'><div><div id='show_context' class='show_context'>${getShowContext()}</div></div></div>`
+	return `<div id= 'accordion' class='accordion'>${getAccordion()}</div><div id='context' class='context'><div>${getShowContext(versionDetail)}</div></div>`
 }
 
 const addEventListeners = () =>{
 	setItemClickListener();
 	setOperEleClickListener();
 	setBtnListener();
+	setAccordingListener();
 }
