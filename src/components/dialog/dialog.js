@@ -18,7 +18,6 @@ export const setBtnListener = () =>{
     btnEle.addEventListener('click',(ev)=>{
         let ip = btnEle.getAttribute('ip');
         let target = ev.target;
-        console.log(ip)
         while(target != btnEle){
             if(target.id == 'close' ||target.id == 'cancel'){
                 handleCancel('addDialog');

@@ -1,6 +1,6 @@
 import {creatElements} from '../../common/js/util'
 import {getAccordion, setItemClickListener,getHistory} from '../../components/accordion/accordion'
-import {getShowContext,setTableData,setOperEleClickListener} from '../../components/showcontext/showcontext';
+import {getShowContext,initEnv,setOperEleClickListener} from '../../components/showcontext/showcontext';
 import header from '../../components/header/header.html';
 import {setAccordingListener} from '../../components/header/header.js';
 import {versionDetail} from '../../../static/js/constant';
@@ -33,7 +33,7 @@ export const I_RESOLVE_INIT = (transition) => {
 		html:footerHtml
 	});
 	
-	setTableData(versionDetail);
+	initEnv(versionDetail);
 	getHistory();
 
 	creatElements({

@@ -27,12 +27,12 @@ export const creatElements = ({parentId,ele,id,className,html}) => {
 
 		if(html&&element){
 			!isHTMLElement(html) && element.insertAdjacentHTML('beforeend', html);
-			isHTMLElement(html) && element.append(html);
-			parent.append(element);
+			isHTMLElement(html) && element.appendChild(html);
+			parent.appendChild(element);
 		}
 		if(html&&!element){
-			!isHTMLElement(html) && parent.append(parseDom(html)[0]);
-			isHTMLElement(html) && parent.append(html);
+			!isHTMLElement(html) && parent.appendChild(parseDom(html)[0]);
+			isHTMLElement(html) && parent.appendChild(html);
 		}
 	} catch (error) {
 		console.log(error);

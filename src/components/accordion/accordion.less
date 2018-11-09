@@ -13,15 +13,18 @@
     height:45px;
     color: #f3f3f3;
     padding: 0 30px;
+    cursor: pointer;
     &::before{
         margin-right: 15px;
     }
-    &:hover{
-        cursor: pointer;
-        background: #435466;
-        color: #00b4cf;
-        background: #435466;
+    &:hover&:extend(.accordion_item_active){
     }
+}
+
+.accordion_item_active{
+    background: #435466;
+    color: #00b4cf;
+    background: #435466;
 }
 
 .history{

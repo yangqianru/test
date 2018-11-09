@@ -2,7 +2,7 @@ import './showcontext.less';
 import showcontext from './showcontext.html';
 import { creatElements, parseDom, showDialog } from '../../common/js/util';
 import tableItem from './tableitem.html';
-
+import {addEnvToLocal, deleteEnvFromLocal} from './operation'
 
 //主体内容
 export const getShowContext = (data) => {
@@ -10,19 +10,15 @@ export const getShowContext = (data) => {
 }
 
 export const setTableData = (data) => {
-    //存储数据到localstorage
-    localStorage.setItem('envsData', JSON.stringify(data));
 
     let buildingNum=0,idleNum=0,physcalNum=0,virtualNum=0,sumNum=data.length;
 
     for (const item of data) {
          //type:0--physical,1-virtual;
          item.type == 0?physcalNum++:virtualNum++;
-         console.log(physcalNum,virtualNum);
  
          //badge:idle/building
          item.badge == 'idle'?buildingNum++:idleNum++;
-         console.log(buildingNum,idleNum);
  
         let tableEle = parseDom(tableItem)[0];
         tableEle.getElementsByClassName('item_info_top_link')[0].innerText = item.link;
@@ -85,35 +81,17 @@ export const setOperEleClickListener = () => {
     })
 }
 
-const deleteEnv = (env, ip) => {
-    let envsData = JSON.parse(localStorage.getItem('envsData'));
-    for (const item of envsData) {
-        let envs = item.envs;
-        let index = envs.indexOf(env);
-        if (item.ip == ip && index != -1) {
-            envs.splice(index, 1);
-            console.log(envs, envsData);
-            setTableData(envsData);
-            break;
-        }
-    }
+export const deleteEnv = (env, ip) => {
+    let envsData = deleteEnvFromLocal(env, ip);
+    setTableData(envsData);
 }
 
 export const addEnv = (envStr, ip) => {
-    let envsData = JSON.parse(localStorage.getItem('envsData')), newEnvs = envStr.split(',');
-    for (const OlderItem of envsData) {
-        let OlderEnvs = OlderItem.envs;
-        if (OlderItem.ip == ip) {
-            for (let newEnv of newEnvs) {
-                let index = OlderEnvs.indexOf(newEnv);
-                if (index == -1) {
-                    OlderEnvs.push(newEnv);
-                } else {
-                    console.log(newEnv + '添加失败，此浏览器已存在！')
-                }
-            }
-            setTableData(envsData);
-            break;
-        }
-    }
+    let envsData = addEnvToLocal(envStr, ip);
+    setTableData(envsData);
+}
+
+export const initEnv = (versionDetail) => {
+    localStorage.setItem('envsData', JSON.stringify(versionDetail));
+    setTableData(versionDetail);
 }
