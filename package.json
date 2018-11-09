@@ -6,7 +6,8 @@
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
     "build": "npm run clean && webpack --config build/webpack.prod.conf.js",
-    "clean": "rimraf ./dist"
+    "clean": "rimraf ./dist",
+    "test":"karma start"
   },
   "keywords": [],
   "author": "yangqianru",

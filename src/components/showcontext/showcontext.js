@@ -21,6 +21,7 @@ export const setTableData = (data) => {
          item.badge == 'idle'?buildingNum++:idleNum++;
  
         let tableEle = parseDom(tableItem)[0];
+        
         tableEle.getElementsByClassName('item_info_top_link')[0].innerText = item.link;
         tableEle.getElementsByClassName('item_info_top_badge')[0].innerText = item.badge;
         tableEle.getElementsByClassName('item_info_top_ip')[0].innerText = item.ip;
@@ -35,7 +36,10 @@ export const setTableData = (data) => {
         tableEle.getElementsByClassName('icon-plus')[0].setAttribute('id', 'plus-' + item.ip);
         if (item.badge.toLowerCase() == 'building') {
             tableEle.getElementsByClassName('icon-deny')[0].classList.add('icon-deny-show');
+            tableEle.classList.add('list_item_blue');
             tableEle.getElementsByClassName('item_info_top_badge')[0].classList.add('building');
+        }else{
+            tableEle.classList.add('list_item_orange');
         }
         creatElements({
             parentId: 'show_list_table',

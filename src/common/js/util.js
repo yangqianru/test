@@ -81,13 +81,15 @@ export const showDialog=(dialogId,left,top,ip)=>{
 		document.getElementById('input').value = '';
 		coverEle.classList.add('display');
 		dialogEle.setAttribute('open',open);
+		dialogEle.style.display='block';
 		dialogEle.setAttribute('ip',ip);
 	}
 	
-export const hideDialog=(dialogId)=>{
-	let dialogEle = document.getElementById(dialogId),
+	export const hideDialog=(dialogId)=>{
+		let dialogEle = document.getElementById(dialogId),
 		coverEle = document.getElementById('cover');
-	coverEle.classList.remove('display');
-    dialogEle.removeAttribute('open');
+		coverEle.classList.remove('display');
+		dialogEle.removeAttribute('open');
+		dialogEle.style.display='none';
     dialogEle.removeAttribute('ip');
 }
