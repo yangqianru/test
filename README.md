@@ -15,7 +15,7 @@ npm install
 //启用开发环境
 npm start
 
-//启用生产环境，代码生成在dist目录，找到dist/index.html,点击运行即可看到效果
+//启用生产环境，代码生成在dist目录
 npm run build
 ```
 ### 单元测试
@@ -50,4 +50,3 @@ npm run test
 > **Phone**
 
 ![phone](E:\05\code\cruise\ReaderMe_pic\phone_01.png)![phone](E:\05\code\cruise\ReaderMe_pic\phone_02.png)
-
