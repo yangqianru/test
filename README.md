@@ -1,5 +1,6 @@
 ---
 typora-copy-images-to: ReaderMe_pic
+typora-root-url: ReaderMe_pic
 ---
 
 ### 概述
@@ -23,30 +24,32 @@ npm run build
 npm run test
 ```
 
-![test_chrome](E:\05\code\cruise\ReaderMe_pic\test_chrome.png)![test_result](E:\05\code\cruise\ReaderMe_pic\test_result.png)
+![test_chrome](/test_chrome.png)
+
+![test_result](/test_result.png)
 
 ### 功能
 > **Add New Resources**
 >
-> ![addFun](E:\05\code\cruise\ReaderMe_pic\addFun.png)
+> ![addFun](/addFun.png)
 
 > **delete Resource**
 >
-> ![deleteFun](E:\05\code\cruise\ReaderMe_pic\deleteFun.png)
+> ![deleteFun](/deleteFun.png)
 
 ### 响应式布局
 > **Desktop HD**
 
-![desktop_hd](E:\05\code\cruise\ReaderMe_pic\desktop_hd.png)
+![desktop_hd](/desktop_hd.png)
 
 > **Desktop**
 
-![desktop](E:\05\code\cruise\ReaderMe_pic\desktop.png)
+![desktop](/desktop.png)
 
 > **Tablet**
 
-![tablet_01](E:\05\code\cruise\ReaderMe_pic\tablet_01.png)![tablet_02](E:\05\code\cruise\ReaderMe_pic\tablet_02.png)
+![tablet_01](/tablet_01.png)![tablet_02](/tablet_02.png)
 
 > **Phone**
 
-![phone](E:\05\code\cruise\ReaderMe_pic\phone_01.png)![phone](E:\05\code\cruise\ReaderMe_pic\phone_02.png)
+![phone](/phone_01.png)![phone](/phone_02.png)
